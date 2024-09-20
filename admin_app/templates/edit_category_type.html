@@ -1,0 +1,25 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="font-weight-bold text-primary text-center">Edit Category</h2>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="categoryTypeName"><b>Category Type Name</b></label>
+                            <input type="text" class="form-control" id="categoryTypeName" name="category_type" value="{{ category_type.category_type }}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">Update Category Type</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

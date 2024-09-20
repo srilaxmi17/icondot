@@ -1,0 +1,225 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="container">
+
+        <!-- Icons table -->
+        <div class="container-fluid">
+            <div class="row">
+                <aside class="col-md-4 chat-list">
+                    {% if not chat %}
+                    <h2 class="text-center mb-4"><strong>CHATS</strong></h2>
+                    {% endif %}
+                    <ul class="list-group">
+                        {% for quote in r_quote %}
+                        <li class="list-group-item chat-item text-center"
+                            style="border-radius: 25px; padding: 0px; margin-bottom: 5px;">
+                            <a href="{% url 'admin_app:chat_detail' quote.id %}">{{ quote.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <ul class="list-group">
+                        {% if chat %}
+                            <li class="list-group-item chat-item text-center active"
+                                style="border-radius: 25px; padding: 0px; margin-bottom: 5px;">
+                                <a href="" class="text-white">{{ chat.name }}</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <ul class="list-group">
+                        {% if chat %}
+                            <li class="list-group-item chat-item text-center "
+                                style="border-radius: 25px; padding: 0px; margin-bottom: 5px;">
+                                <a href="{% url 'admin_app:chatbox' %}" class="btn btn-dark text-white" style="border-radius: 25px;">Back</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                </aside>
+
+                <div class="col-md-11 chat-window">
+                    {% if chat %}
+                    <div class="chat-header">
+                        <h2>{{ chat.name }}</h2>
+                        <p><strong>E-mail:</strong> {{ chat.user.email }}</p>
+                        <p><strong>Service:</strong> {{ chat.service }}</p>
+                        <p><strong>Description:</strong> {{ chat.description }}</p>
+                        {% if chat.rq_image %}
+                        <p><strong>Attachment :</strong> <a href="{{ chat.rq_image.url }}" target="_blank">View
+                                Attachment</a></p>
+                        {% else %}
+                        <p><strong>No Attachment found</strong></p>
+                        {% endif %}
+
+                    </div>
+                    {% endif %}
+
+                    {% if not chat %}
+                    <div class="no-chat-message">
+                        <p><strong>"Please select a chat from the list to view details and send a reply."</strong></p>
+                    </div>
+                    {% endif %}
+
+                    <form method="POST" action="{% url 'admin_app:send_reply' %}" >
+                        {% csrf_token %}
+                        <input type="hidden" name="chat_id" value="{{ chat.id }}">
+                        {% if chat %}
+                        <div class="form-group">
+                            <textarea class="form-control" name="reply" rows="5" placeholder="Write your reply here..."
+                                required></textarea>
+                        </div>
+                        <div class="button-container">
+                            <button type="submit" class="btn btn-success">Send Reply</button>
+                            
+                        </div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<style>
+    body {
+        background-color: #fafafa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container-fluid {
+        height: 100vh;
+        display: flex;
+        box-shadow: 5px 5px 3px 5px #32323229;
+        border-radius: 25px;
+    }
+
+    .row {
+        display: flex;
+        width: 80%;
+        flex-wrap: nowrap;
+    }
+
+    .no-chat-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        padding: 100px;
+        border-radius: 20px;
+        box-shadow: inset 0 0 10px rgba(1, 137, 115, 0.1);
+    }
+
+    .chat-list {
+        background-color: #ffffff;
+        border-right: 8px solid #3e3d3d20;
+        padding: 25px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        border-radius: 25px;
+    }
+
+    .chat-list h2 {
+        margin-bottom: 20px;
+        font-size: 28px;
+        color: #262626;
+    }
+
+    .chat-item a {
+        color: #141414;
+        text-decoration: none;
+        display: block;
+        padding: 10px 0;
+        text-transform: capitalize;
+
+    }
+
+    .chat-window {
+        background-color: #ffffff;
+        padding: 50px;
+        flex-grow: 1;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+        overflow-y: auto;
+        border-radius: 25px;
+
+    }
+
+    .chat-header {
+        border-bottom: 2px solid #fa5624;
+        box-shadow: 0px 10px 10px 1px #32323229;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+        border-radius: 25px;
+    }
+
+    .chat-header h2 {
+        margin-bottom: 10px;
+        font-size: 28px;
+        font-weight: bolder;
+        color: #535454;
+        margin-left: 30%;
+        text-transform: capitalize;
+    }
+
+    .chat-header p {
+        margin: 20px 0;
+        color: #585858;
+        padding-left: 10%;
+    }
+
+    .chat-header a {
+        color: #f68300;
+        text-decoration: none;
+    }
+
+    .chat-header a:hover {
+        text-decoration: underline;
+    }
+
+    .form-group textarea {
+        border-radius: 10px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        resize: vertical;
+    }
+
+    .button-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .button-container .btn {
+        flex: 1;
+        border-radius: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .btn-success {
+        background-color: #0095f6;
+        border: none;
+        color: white;
+    }
+
+    .btn-success:hover {
+        background-color: #007bb5;
+    }
+
+    .btn-dark {
+        background-color: #262626;
+        border: none;
+        color: white;
+    }
+
+    .btn-dark:hover {
+        background-color: #333333;
+    }
+
+</style>
+
+{% endblock %}

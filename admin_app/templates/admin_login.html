@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'css/admin_login.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="register-box">
+            <p class="head">Welcome back!</p><br>
+
+            <form method="post" action="{% url 'admin_app:admin_login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="a_username" id="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="a_password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="register-btn">Login</button>
+            </form>
+            <p class="login-link" style="text-align: center;">You don't have an account yet? <a href="{% url 'admin_app:admin_register' %}">Register now</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+</head>
+<body>
+    <h2>Admin Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="{% url 'admin_app:admin_register' %}">Register here</a></p>
+</body>
+</html> -->

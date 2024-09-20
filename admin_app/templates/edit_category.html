@@ -1,0 +1,44 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="container mt-4">
+        <h2 class="font-weight-bold text-primary text-center">Edit Category</h2>
+
+        <!-- Form to edit a category -->
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card">
+                   
+                    
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <!-- Category Name Field -->
+                            <div class="form-group mb-3">
+                                <label for="categoryName"><b>Category Name</b></label>
+                                <input type="text" class="form-control" id="categoryName" name="category" value="{{ category.category }}" required>
+                            </div>
+
+                            <!-- Category Image Field -->
+                            <div class="form-group mb-3">
+                                <label for="image"><b>Category Image</b></label>
+                                {% if category.cat_image %}
+                                    <img src="{{ category.cat_image.url }}" alt="{{ category.category }}" class="img-thumbnail mb-2" style="width: 150px; height: auto;">
+                                {% else %}
+                                    No image available
+                                {% endif %}
+                                <input type="file" class="form-control mt-2" id="image" name="cat_image">
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

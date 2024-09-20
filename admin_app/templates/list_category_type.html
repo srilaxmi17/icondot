@@ -1,0 +1,109 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="pagetitle">
+        <div class="container mt-4">
+            <div class="row">
+                <!-- Left side: Category Types -->
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <h2 class="font-weight-bold text-primary text-center">Category Types</h2>
+
+                    <!-- Button to show/hide the form -->
+                    <button class="btn btn-success mb-3" onclick="toggleForm('categoryTypeForm')">Add New Category Type</button>
+                    
+                    <!-- Form to add a new category type -->
+                    <div id="categoryTypeForm" style="display: none;">
+                        <form method="post" action="{% url 'admin_app:add_category_type' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="categoryTypeName"><b>Category Type Name</b></label>
+                                <input type="text" class="form-control" id="categoryTypeName" name="category_type" required>
+                            </div>
+                            <button type="submit" class="btn btn-dark mt-2">Add Category Type</button>
+                        </form>
+                    </div>
+                
+                    <!-- Table to list category types -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Category Type Name</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for category_type in category_types %}
+                                <tr>
+                                    <td>{{ category_type.category_type }}</td>
+                                    <td>
+                                        <a href="{% url 'admin_app:edit_category_type' category_type.id %}" class="btn btn-dark btn-sm">Edit</a>
+                                        <a href="{% url 'admin_app:delete_category_type' category_type.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Right side: Category Shapes -->
+                <div class="col-lg-6 col-md-12 mb-4">
+                    <h2 class="font-weight-bold text-primary text-center">Category Shapes</h2>
+
+                    <!-- Button to show/hide the form -->
+                    <button class="btn btn-success mb-3" onclick="toggleForm('shapeForm')">Add New Shape</button>
+                    
+                    <!-- Form to add a new shape -->
+                    <div id="shapeForm" style="display: none;">
+                        <form method="post" action="{% url 'admin_app:add_shape' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="shapeName"><b>Shape Name</b></label>
+                                <input type="text" class="form-control" id="shapeName" name="category_shape" required>
+                            </div>
+                            <button type="submit" class="btn btn-dark mt-2">Add Shape</button>
+                        </form>
+                    </div>
+
+                    <!-- Table to list shapes -->
+                    <div class="d-flex justify-content-center mt-3">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Shape Name</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for shape in shapes %}
+                                <tr>
+                                    <td>{{ shape.category_shape }}</td>
+                                    <td>
+                                        <a href="{% url 'admin_app:edit_shape' shape.id %}" class="btn btn-dark btn-sm">Edit</a>
+                                        <a href="{% url 'admin_app:confirm_delete_shape' shape.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+function toggleForm(formId) {
+    var form = document.getElementById(formId);
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';
+    } else {
+        form.style.display = 'none';
+    }
+}
+</script>
+{% endblock %}

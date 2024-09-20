@@ -1,0 +1,49 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="container mt-4">
+        <h2 class="font-weight-bold text-primary text-center">Edit Gradient Image</h2>
+
+        <!-- Form to edit a gradient image -->
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm p-4">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <!-- Display the current image if available -->
+                            <div class="form-group mb-3 text-center">
+                                {% if form.instance.gradient_image %}
+                                    <img src="{{ form.instance.gradient_image.url }}" alt="Current Image" class="img-fluid img-thumbnail mb-3" style="max-width: 150px;">
+                                {% else %}
+                                    <p>No image available</p>
+                                {% endif %}
+                            </div>
+
+                            <!-- Form fields -->
+                            <div class="form-group mb-3">
+                                <label for="id_gradient_image" class="form-label"><b>Upload New Image</b></label>
+                                {{ form.gradient_image }}
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="id_sub_gradient_category" class="form-label"><b>Sub-Gradient Category</b></label>
+                                {{ form.sub_gradient_category }}
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                                <a href="{% url 'admin_app:gradient_image_list' %}" class="btn btn-secondary mt-3 ms-2">Back to list</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

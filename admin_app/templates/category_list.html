@@ -1,0 +1,64 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="container mt-4">
+        <h2 class="font-weight-bold text-dark text-center">Add and List Categories</h2>
+
+        <!-- Form to add a new category -->
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_category" class="form-label"><b>Category Name</b></label>
+                        <input type="text" class="form-control" id="id_category" name="category" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_cat_image" class="form-label"><b>Category Image</b></label>
+                        <input type="file" class="form-control" id="id_cat_image" name="cat_image">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-dark">Add Category</button>
+                    </div>
+                    
+
+                </form>
+            </div>
+        </div>
+        
+        <!-- Table to list categories -->
+        <div>
+            <h3 class="font-weight-bold text-dark text-center">Category List</h3>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Category Name</th>
+                        <th scope="col">Category Image</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td>{{ category.category }}</td>
+                        <td>
+                            {% if category.cat_image %}
+                                <img src="{{ category.cat_image.url }}" alt="{{ category.category }}" style="width: 100px; height: auto;">
+                            {% else %}
+                                No image
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'admin_app:edit_category' category.id %}" class="btn btn-dark btn-sm">Edit</a>
+                            <a href="{% url 'admin_app:delete_category' category.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% endblock %}

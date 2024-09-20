@@ -1,0 +1,89 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="container mt-4">
+        <h2 class="font-weight-bold text-primary text-center">Edit Icon</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Display current image if it exists -->
+            <div class="form-group row">
+                <label for="image" class="col-sm-3 col-form-label text-right"><b>Image</b></label>
+                <div class="col-sm-9">
+                    {% if icon.image %}
+                        <div class="mb-3">
+                            <img src="{{ icon.image.url }}" alt="{{ icon.image_name }}" style="width: 150px; height: auto;">
+                        </div>
+                    {% else %}
+                        <p>No image available.</p>
+                    {% endif %}
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="image_name" class="col-sm-3 col-form-label text-right"><b>Image Name</b></label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="image_name" name="image_name" value="{{ icon.image_name }}">
+                </div>
+            </div>
+            <br>
+
+            <div class="form-group row">
+                <label for="category" class="col-sm-3 col-form-label text-right"><b>Category</b></label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="category" name="category">
+                        {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id == icon.category.id %}selected{% endif %}>{{ category.category }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="image_plan" class="col-sm-3 col-form-label text-right"><b>Image Plan</b></label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="image_plan" name="image_plan">
+                        {% for plan_value, plan_display in icon.IMAGE_PLAN_CHOICES %}
+                        <option value="{{ plan_value }}" {% if plan_value == icon.image_plan %}selected{% endif %}>{{ plan_display }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <br>
+            <div class="form-group row">
+                <label for="category_type" class="col-sm-3 col-form-label text-right"><b>Category Type</b></label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="category_type" name="category_type">
+                        {% for type in types %}
+                        <option value="{{ type.id }}" {% if type.id == icon.category_type.id %}selected{% endif %}>{{ type.category_type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label for="category_shape" class="col-sm-3 col-form-label text-right"><b>Category Shape</b></label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="category_shape" name="category_shape">
+                        {% for shape in shapes %}
+                        <option value="{{ shape.id }}" {% if shape.id == icon.category_shape.id %}selected{% endif %}>{{ shape.category_shape }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="form-group row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary mt-2">Save Changes</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+{% endblock %}

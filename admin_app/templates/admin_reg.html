@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/admin_login.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="register-box">
+            <p class="head">Create an Account</p><br>
+
+            <form method="post" action="{% url 'admin_app:admin_register' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="a_username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="a_password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="register-btn">Register</button>
+            </form>
+            <p class="login-link" style="text-align: center;">Already have an account? <a href="{% url 'admin_app:admin_login' %}">Login</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

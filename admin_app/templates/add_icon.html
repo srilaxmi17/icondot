@@ -1,0 +1,69 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="container mt-4">
+        <h2 class="font-weight-bold text-primary text-center">Add New Icon</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <!-- Image upload field -->
+            <div class="form-group">
+                <label for="image"><b>Image</b></label>
+                <input type="file" class="form-control" id="image" name="image" required>
+            </div>
+            
+            <!-- Image name field -->
+            <div class="form-group">
+                <label for="image_name"><b>Image Name</b></label>
+                <input type="text" class="form-control" id="image_name" name="image_name">
+            </div>
+            
+            <!-- Category selection -->
+            <div class="form-group">
+                <label for="category"><b>Category</b></label>
+                <select class="form-control" id="category" name="category">
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.category }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- Image Plan selection -->
+            <div class="form-group">
+                <label for="image_plan"><b>Image Plan</b></label>
+                <select class="form-control" id="image_plan" name="image_plan">
+                    {% for value, label in form.fields.image_plan.choices %}
+                    <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- Category Type selection -->
+            <div class="form-group">
+                <label for="category_type"><b>Category Type</b></label>
+                <select class="form-control" id="category_type" name="category_type">
+                    {% for type in types %}
+                    <option value="{{ type.id }}">{{ type.category_type }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- Category Shape selection -->
+            <div class="form-group">
+                <label for="category_shape"><b>Category Shape</b></label>
+                <select class="form-control" id="category_shape" name="category_shape">
+                    {% for shape in shapes %}
+                    <option value="{{ shape.id }}">{{ shape.category_shape }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary mt-2">Add Icon</button>
+        </form>
+    </div>
+    
+</main>
+{% endblock %}

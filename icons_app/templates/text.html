@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"> -->
+
+  <title>Iconsdot</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/Favicon.svg' %}" rel="icon">
+  <link href="{% static 'img/Favicon.svg' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/quill/quill.snow.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/quill/quill.bubble.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/remixicon/remixicon.css'%}" rel="stylesheet">
+  <link href="{% static 'vendor/simple-datatables/style.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'css/icons_style.css'%}" rel="stylesheet">
+  
+
+<style>
+  .mobile-message {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100vh; 
+    padding: 0; 
+    z-index: 1000;
+    background-color: #1a1624; 
+    color: #ffffff; 
+    font-size: 16px;
+    text-align: center;
+    box-sizing: border-box;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-message button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 4vw; 
+    cursor: pointer;
+    position: absolute;
+    right: 15vw; 
+    top: 10vw;
+    line-height: 1; 
+}
+
+h1 {
+    font-size: 8vw;
+    margin-bottom: 2vw;
+    white-space: nowrap; 
+}
+
+p {
+    font-size: 4vw;
+    margin: 0;
+    padding: 0 ; 
+    max-width: 90%; 
+}
+
+
+@media only screen and (min-width: 912px) {
+    .mobile-message {
+        display: none; 
+    }
+}
+
+
+
+
+
+
+.popup-link{
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.popup-link a{
+    background: #333;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size:17px;
+    cursor:pointer;
+    margin:20px;
+    text-decoration:none;
+}
+
+.popup-container {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.3);
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 17, 17, 0.61);
+    display: flex;
+    align-items: center;
+}
+.popup-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+.popup-content p{
+    font-size: 17px;
+    padding: 10px;
+    line-height: 20px;
+}
+.popup-content a.close{
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    background: none;
+    padding: 0;
+    margin: 0;
+    text-decoration:none;
+}
+
+.popup-content a.close:hover{
+  color:#333;
+}
+
+.popup-content span:hover,
+.popup-content span:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-container:target{
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.popup-container h3{
+  margin:10px;
+}
+/*End popup styles*/
+
+/* Additional styles */
+.popup-style-2{
+  transform: scale(0.3);
+  
+}
+
+.popup-style-2:target{
+  transform: scale(1);
+}
+
+.popup-style-3{
+  left:100%;
+  
+}
+
+.popup-style-3:target{
+  left:0;
+}
+
+.popup-style-4{
+  transform: rotate(180deg);
+}
+
+.popup-style-4:target{
+  transform: rotate(0deg);
+}
+
+.popup-style-5{
+  top:100%;
+  
+}
+
+.popup-style-5:target{
+  top:0;
+}
+
+.popup-style-6{
+  transform: scale(15.3);
+  
+}
+
+.popup-style-6:target{
+ transform: scale(1);
+ }
+
+.popup-style-7{
+  transform: skewY(180deg);
+   transition: all 0.7s ease-in-out;
+}
+
+.popup-style-7:target{
+ transform: skewY(0deg);
+
+ }    
+
+</style>
+  
+
+</head>
+
+<body >
+  <script>
+    window.addEventListener('unload', function() {
+      // This is just an example; it doesn't guarantee that the page will refresh
+      // when the user comes back from the second page
+    });
+  </script>
+  <div class="mobile-message">
+    <h1>Desktop Only</h1>
+      <p>This website is not intended for mobile/tablet devices. Please visit this website on a desktop or laptop.</p>
+    <button onclick="document.getElementById('mobile-message').style.display='none'">&times;</button>
+  </div>
+
+  <!-- ======= Header ======= -->
+  {% block header %}
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between ">
+      <a href="#" class="navbar-brand logo d-flex align-items-center">
+        <img src="{% static 'images/Logo Black-04.png'%}" alt="IconsDot" style="height: 80px;  object-fit: contain;">
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn ms-1"></i>
+    </div>
+    <!-- End Logo -->
+
+
+    <div class="search-bar">
+      <form id="search" onsubmit="event.preventDefault(); highlightSearch();" class="search-form d-flex align-items-center" method="post" action="#">
+          <input type="text" id="searchText" name="query" placeholder="Search 1000+ Icons                       Type / to search"
+              title="Enter search keyword" class="ms-4" style="background-color:#f1eeee;">
+          <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+  </div>
+    <style>
+      .highlight {
+        background-color: #fffb03;
+        font-weight: bold;
+      }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchText');
+    const searchForm = document.getElementById('search');
+    
+    searchForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+        clearHighlights(); // Clear previous highlights
+        highlightVisibleText(searchInput.value);
+    });
+
+    function highlightVisibleText(searchTerm) {
+        if (!searchTerm.trim()) return; 
+
+        const regex = new RegExp(`(${searchTerm.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+        
+        const elements = document.querySelectorAll('body *:not(script):not(style)');
+        elements.forEach(element => {
+            if (element.children.length === 0) {
+                const text = element.innerHTML;
+                if (text.match(regex)) {
+                    element.innerHTML = text.replace(regex, '<span class="highlight">$1</span>');
+                }
+            }
+        });
+    }
+
+    function clearHighlights() {
+        document.querySelectorAll('.highlight').forEach(element => {
+            const parent = element.parentNode;
+            parent.innerHTML = parent.innerHTML.replace(/<span class="highlight">([^<]+)<\/span>/g, '$1');
+        });
+    }
+});
+  </script>
+    
+      
+
+    <!-- End Search Bar -->
+
+    <!-- Promotion Button -->
+    <li class="nav-item d-none d-lg-block ms-5 me-1" >
+      <a href="{% url 'icons_app:subscription' %}" class="btn text-white responsive-btn">
+          Get Full Access & 50% Offer
+      </a>
+      <style>
+        .responsive-btn {
+            width: 100%; 
+            border-radius: 6px; 
+            min-height: 43px; 
+            font-size: 1.25rem;
+            padding: 4px 10px;
+            background: linear-gradient(86.43deg, #FFE978 0%, #FB4620 47%, #8D20FB 99%);
+            text-align: center;
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+           
+        }
+
+
+        @media (max-width: 1024px) {
+            .responsive-btn {
+                font-size: 0.9rem; 
+                height: 35px; 
+                padding: 3px 8px; 
+            }
+        }
+
+      </style>
+  </li>
+    <nav class="header-nav ms-auto py-3">
+      <ul class="d-flex align-items-center">
+        <!-- Mobile Search Icon -->
+        <li class="nav-item d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search ms-2"></i>
+          </a>
+        </li>
+        <!-- End Mobile Search Icon -->
+
+
+        <li class="nav-item d-lg-none">
+          <a href="{% url 'icons_app:subscription' %}" class="btn text-white"
+            style="max-width: 100%; font-size: 10px;overflow: hidden; max-height: 50px; border-radius: 8px; padding: 0px 0px; background: linear-gradient(86.43deg, #FFE978 0%, #FB4620 47%, #8D20FB 99.5%);">
+            Get Full Access & 50% Offer
+          </a>
+        </li>
+
+
+        <li class="nav-item dropdown pe-2">
+          {% if request.session.user_id %}
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="{% static 'images/Favicon.svg' %}" style="width: 40px;" alt="Profile" class="rounded-circle">
+          {{ request.session.umail }}
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-submenu position-relative">
+              <a class="dropdown-item d-flex align-items-center" href="#" id="subscriptionDropdown">
+                <span>Subscription</span>
+              </a>
+              <ul class="dropdown-menu position-absolute end-100 ">
+                <li>
+                  <a class="dropdown-item d-flex align-items-center " href="">
+                    <span style="padding-left: 40px;">Cancel</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" id="Feedback" href="">
+                <span>Feedback</span>
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'icons_app:logout' %}">
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+          {% else %}
+          <div class="d-flex mt-md-0">
+            <a href="{% url 'icons_app:login' %}">
+              <button type="button" class="btn svg me-2 login-button"
+                style="background-color: rgba(227, 227, 232, 0.573); width: 90px; height: 40px;">Login</button>
+            </a>
+            <a href="{% url 'icons_app:register' %}">
+              <button type="button" class="btn text-white svg me-4  register-button"
+                style="background-color: #fe440b; width: 100px; height: 40px;">Register</button>
+            </a>
+          </div>
+          {% endif %}
+        </li>
+        <style>
+          .dropdown-submenu {
+            position: relative;
+
+          }
+
+          .dropdown-submenu .dropdown-menu {
+            left: -50%;
+            top: 0;
+            margin-top: 0;
+            margin-left: -50px;
+          }
+
+          .dropdown-submenu:hover .dropdown-menu {
+            display: block;
+            background-color:white;
+
+          }
+
+        </style>
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+  {% endblock header %}
+  <!-- ======= Sidebar ======= -->
+  {% block sidebar %}
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav text-dark" id="sidebar-nav">
+      <p style="font-weight: 600; font-size: 20px; margin-left: 5%;">Categories</p>
+    
+      <li class="nav-item">
+        <a class="nav-link justify-content-between mb-2 {% if not request.GET.cat_id %}active{% endif %}" href="{% url 'icons_app:index' %}">
+          <img src="{% static 'images/Favicon.svg' %}" alt="All categories"
+               style="width: 15px; height: 15px; object-fit: cover; border-radius: 50%;"
+               class="category-image" />
+          &nbsp;&nbsp;
+          <div class="d-flex category-name">
+            <div style="color: rgb(24, 24, 24); font-size: 14px; font-weight: 100;">All</div>
+          </div>
+          <div class="text-dark" style="font-size: 12px; font-weight: 100;">{{ total_image_count }}</div>
+        </a>
+      </li>
+    
+      {% for cat in category %}
+        <li class="nav-item">
+          <a href="?cat_id={{ cat.id }}{% if request.GET.type_id %}&type_id={{ request.GET.type_id }}{% endif %}{% if request.GET.shape_id %}&shape_id={{ request.GET.shape_id }}{% endif %}" class="nav-link justify-content-between mb-2 {% if request.GET.cat_id|stringformat:"s" == cat.id|stringformat:"s" %}active{% endif %}" >
+            <img src="{{ cat.cat_image.url }}" alt="{{ cat.category }}"
+                 style="width: 15px; height: 15px; object-fit: fill; border-radius: 50%;"
+                 class="category-image" />
+            &nbsp;&nbsp;
+            <div class="category-name">
+              <div class="justify-content-start" style="color: rgb(24, 24, 24); font-weight: 100; font-size: 14px;">{{ cat.category }}</div>
+            </div>
+            <div>
+              <div class="text-dark" style="font-size: 12px; font-weight: 100;">{{ cat.image_count }}</div>
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <style>
+      .sidebar-nav .nav-link {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        text-decoration: none;
+        color: rgb(12, 12, 12);
+        font-weight: 100;
+        font-size: 14px;
+        border-radius: 4px;
+      }
+
+      .sidebar-nav .nav-link .category-image {
+        width: 15px;
+        height: 15px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .sidebar-nav .nav-link .category-name {
+        margin-left: 8px;
+      }
+
+      .sidebar-nav .nav-link .text-dark {
+        font-size: 12px;
+        font-weight: 100;
+      }
+
+      /* Active link styles */
+      .sidebar-nav .nav-link.active {
+        background-color:rgb(254, 191, 190);
+        color: #151515;
+        font-weight: bold;
+      }
+      .sidebar-nav .nav-link:hover{
+        box-shadow: 0 0.9px 0px 0.007rem #ec2525;
+      }
+
+      .sidebar-nav .nav-link.active .category-image {
+        border: 1px solid #bcb8b8;
+      }
+
+      .sidebar-nav .nav-link.active .category-name {
+        color: #fb4420;
+      }
+
+    </style>
+    
+  </aside><!-- End Sidebar-->
+  {% endblock sidebar %}
+  {% block main %}
+  <main id="main" class="main" >
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-9">
+          <div class="row">
+            <div class="pagetitle row g-1 ">
+              <div class="col-md-9 ">
+                <div id="filters" class="filters" style="background-color: rgba(227, 227, 232, 0.573); max-width: fit-content; height: 36px; border: 1px solid rgb(186, 186, 186); border-radius: 8px; padding: 1px 4px;">
+                  {% for typ in category_type %}
+                    <a href="?{% if request.GET.cat_id %}cat_id={{ request.GET.cat_id }}{% endif %}&type_id={{ typ.id }}" class="filter-link">
+                      <button type="button" class="btn border-0 {% if request.GET.type_id == typ.id|stringformat:'s' %}active{% endif %}" style="height: 32px; font-size: 12px;">
+                        {{ typ.category_type }}
+                      </button>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div id="filters" class="filters" style="background-color: rgba(227, 227, 232, 0.573); max-width: fit-content; height: 36px; border: 1px solid rgb(186, 186, 186); border-radius: 8px; padding: 1px 4px;">
+                  {% for shape in category_shape %}
+                    <a href="?{% if request.GET.cat_id %}cat_id={{ request.GET.cat_id }}{% endif %}&shape_id={{ shape.id }}" class="filter-link">
+                      <button type="button" class="btn border-0 {% if request.GET.shape_id == shape.id|stringformat:'s' %}active{% endif %}" style="height: 32px; font-size: 12px;">
+                        {{ shape.category_shape }}
+                      </button>
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+            <style>
+
+              .btn {
+                height: 32px;
+                font-size: 12px;
+                border: 1px solid rgb(186, 186, 186);
+                border-radius: 4px;
+                padding: 0 10px;
+                background-color: transparent;
+                color: rgb(31, 30, 30);
+              }
+
+            
+              .btn.active {
+                background-color:rgb(21, 21, 21);
+                color: #ffffff; 
+                
+              }
+              #preview {
+                  border: 1px solid #d9d9d9;
+                  border-radius: 8px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  background-color: #eff6f1;
+              }
+              #preview img {
+                  max-width: 100%;
+                  max-height: 100%;
+                 
+              }
+              .icon-item {
+                      position: relative;
+                      display: inline-block;
+                      border: 1px solid #d4d2d2c3;
+                      border-radius: 6px;
+                      background-color: #dddddbe7;
+
+              }
+
+              .icon-item:hover {
+                border: 0.08em solid rgb(246, 111, 44);
+                border-radius: 6px;
+                transform: border 0.3s ease-in;
+                transition: 0.5s ease-in;
+              }
+
+              .icon-label {
+                position: absolute;
+                top: 2px;
+                right: 2px;
+                background-color: #f6f2f2ae;
+                color: #25e157;
+                padding: 0px 8px;
+                font-size: 12px;
+                border-radius: 4px;
+                border: 1px solid rgba(211, 208, 208, 0.704);
+              }
+
+          </style>
+          
+            <div class="card top-selling overflow-auto">
+              <section class="icon-grid ">
+     
+                <div class="container">
+                    <!-- Icon Selection -->
+                    <div class="icons" data-subscribed="{{ is_subscribed|yesno:'true,false' }}">
+                      {% for i in image_cat %}
+                      <div class="icon-item"
+                           onclick="handleIconClick('{{ i.image.url|escapejs }}', '{{ i.image_plan|escapejs }}')"
+                           {% if i.image_plan == 'Pro' %}
+                           style="background-color: rgb(240, 245, 247);"
+                           {% endif %}>
+                        <img src="{{ i.image.url }}" alt="{{ i.image_plan }}"
+                             style="border-radius: 50%; object-fit: contain; border: 1px solid rgb(210, 207, 207); background-color: #e5e3e3; margin-top: 25%; margin-left: 25%; min-width: 50px; min-height: 50px; max-width: 50px; max-height: 50px">
+                        <div class="icon-label">{{ i.image_plan }}</div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                    
+                    <script>
+                      function handleIconClick(imageUrl, imagePlan) {
+                        const isSubscribed = document.querySelector('.icons').getAttribute('data-subscribed') === 'true';
+                    
+                        if (imagePlan === 'Pro') {
+                          if (isSubscribed) {
+                            // Allow access to Pro icons
+                            console.log('Access granted to Pro icon:', imageUrl);
+                          } else {
+                            // Redirect to the subscription plan page for 'Pro' icons
+                            window.location.href = 'http://127.0.0.1:8000/subscription#subscribePlan';
+                          }
+                        } else {
+                          // Handle 'Free' icons or other logic
+                          console.log('Selected image URL:', imageUrl);
+                        }
+                      }
+                    </script>
+                    
+                </div>
+              </section><br><br>
+            </div>
+          </div>
+        </div><!-- End Left side columns -->
+        <!-- Right side columns -->
+        <div class="col-lg-3 ">
+          <div class="card">
+            
+            <div class="card-body pb-0">
+              <div class="d-flex justify-content-between">
+                <p class="card-title text-dark fw-bold" style="font-size: 16px;">Export Settings </p> 
+                <a href="" style="text-decoration: none; color:#fb4420d8;margin-top: 7%;font-size: 12px; " >Reset</a>
+              </div>
+              <div class="export-settings">
+                <label for="color" style="font-size: 14px;">Color</label>
+                <input type="color" id="colorPicker" value="#000000">
+              </div>
+              <div class="export-format">
+                <label for="format"style="font-size: 14px;">Format</label>
+                <div class="format-buttons">
+                  <div class="btn-group" style="background-color: #eff6f1; max-width: fit-content; height: 35px; border: 1px solid rgb(186, 186, 186);border-radius: 4px; padding: 1px 6px 1px 6px; ">
+                    <button class="svg btn btn1 border-0 btn-sm me-1 ms-1 rounded"  id="exportSvg" >SVG</button>
+                    <button class="svg btn btn1 border-0 btn-sm ms-1 me-1 rounded" id="exportPng" >PNG</button>
+                    <button  class="svg btn btn1 border-0 btn-sm me-1 ms-1 rounded" id="exportJpeg" >JPEG</button>
+                  </div>
+                <style>
+                  
+                  .btn1.selected {
+                      background-color: #a09e9e;
+                      color: white;
+                    
+                  }
+                 
+                  .btn1:not(.selected) {
+                      background-color: transparent;
+                      color: #fe440b;
+                  }
+                </style>
+
+                </div>
+              </div><br>
+                <div class="export-settings">
+                    <h6 style="font-size: 14px;" class="d-flex">Preview</h6>
+                  <button type="button"
+                    style=" min-width: 190px; height: 250px; border: 1px solid #d9d9d9; border-radius: 6px;" id="preview"
+                    value="">
+                    <div id="preview" style="background-color: #ebeaea; border-radius: 50%; width: 110px; height: 110px; display: flex; align-items: center; justify-content: center;">
+                      <canvas id="canvas" style="object-fit:contain; width: 100px; height: 100px; border-radius: 50%;"></canvas>
+                    </div>
+                  </button>
+                </div>
+                <div class="export-settings d-flex mt-4">
+                  <label for="size" style="font-size: 14px;" class="me-5 ms-1">Size(Px)</label>                 
+                  <label for="stroke" style="font-size: 14px;">Stroke(Px)</label>
+                </div>
+                <div class="export-settings d-flex mt-2">
+
+                  <script>
+                    // Function to change the stroke width
+                    function changeStroke(change) {
+                        // Get the current stroke width from the input
+                        var strokeInput = document.getElementById('stroke');
+                        var currentStroke = parseInt(strokeInput.value) || 0;
+
+                        // Update stroke width value
+                        var newStroke = currentStroke + change;
+
+                        // Ensure the stroke value is within the allowed range
+                        if (newStroke < 0) newStroke = 0;
+                        if (newStroke > 35) newStroke = 35;
+
+                        strokeInput.value = newStroke;
+
+                        // Apply new stroke width to selected image
+                        applyStrokeToSelectedImage(newStroke);
+                    }
+
+                    // Function to apply stroke width to selected image
+                    function applyStrokeToSelectedImage(strokeWidth) {
+                        // Get the selected image
+                        var selectedImage = document.querySelector('.icon-item.selected img');
+                        
+                        if (selectedImage) {
+                            // Apply border width to selected image
+                            selectedImage.style.borderWidth = strokeWidth + 'px';
+                        }
+                    }
+
+                    // Function to handle image selection
+                    function selectImage(imageUrl) {
+                        // Deselect previously selected image
+                        var previouslySelected = document.querySelector('.icon-item.selected');
+                        if (previouslySelected) {
+                            previouslySelected.classList.remove('selected');
+                        }
+
+                        // Select the new image
+                        var newSelected = Array.from(document.querySelectorAll('.icon-item'))
+                                              .find(item => item.dataset.imageUrl === imageUrl);
+                        if (newSelected) {
+                            newSelected.classList.add('selected');
+                            // Apply current stroke width to the newly selected image
+                            var currentStroke = document.getElementById('stroke').value;
+                            applyStrokeToSelectedImage(currentStroke);
+                        }
+                    }
+                  </script>
+                  <input type="number" id="size"  value="150" min="100" max="2000"  class="me-1" style=" max-width: 100px; height: 30px;">
+                  <input type="number" id="stroke" value="0" min="0"  max="35" style="max-width: 100px; height: 30px;">
+                </div>
+                {% if request.session.user %}
+                <div id="copySvg" style=" cursor: pointer; background-color: rgba(227, 227, 232, 0.573); max-width: 200px; height: 38px; border: 1px solid rgb(186, 186, 186); border-radius: 6px; padding: 6px 4px 6px 4px; text-align: center;">
+                  Copy as SVG
+              </div><br>
+              {% else %}
+              <a href="#popup2"><div style=" cursor: pointer; background-color: rgba(227, 227, 232, 0.573); max-width: 200px; height: 38px; border: 1px solid rgb(186, 186, 186); border-radius: 6px; padding: 6px 4px 6px 4px; text-align: center;">
+                Copy as SVG
+            </div><br></a>
+            {% endif %}
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                let currentImage = null;
+
+                function canvasToSVG(canvas) {
+                    const width = canvas.width;
+                    const height = canvas.height;
+                    const dataURL = canvas.toDataURL('image/png');
+
+                    let svgContent = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+                    svgContent += `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">\n`;
+                    svgContent += `<image href="${dataURL}" width="${width}" height="${height}" />\n`;
+                    svgContent += `</svg>`;
+
+                    return svgContent;
+                }
+
+                function selectImage(imageUrl) {
+                    currentImage = new Image();
+                    currentImage.crossOrigin = 'Anonymous'; 
+                    currentImage.src = imageUrl;
+                    currentImage.onload = function() {
+                        const size = parseInt(sizeInput.value);
+                        const stroke = parseInt(strokeInput.value);
+
+                        canvas.width = size;
+                        canvas.height = size;
+
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                        // Draw the image
+                        ctx.drawImage(currentImage, stroke, stroke, size - 2 * stroke, size - 2 * stroke);
+
+                        // Draw the border
+                        ctx.strokeStyle = 'black';
+                        ctx.lineWidth = stroke;
+                        ctx.strokeRect(0, 0, size, size);
+
+                        // Apply color filter
+                        ctx.globalCompositeOperation = 'source-atop';
+                        ctx.fillStyle = colorPicker.value;
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                        ctx.globalCompositeOperation = 'source-over';
+                    };
+                }
+
+                function copySvgToClipboard(svgContent) {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = svgContent;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                }
+
+                function handleCopySvg() {
+                    if (currentImage) {
+                        const svg = canvasToSVG(canvas);
+                        copySvgToClipboard(svg);
+                        alert('SVG copied to clipboard!');
+                    } else {
+                        alert('No image selected.');
+                    }
+                }
+
+                // Attach event to copy button
+                document.getElementById('copySvg').addEventListener('click', handleCopySvg);
+
+                // Attach selectImage function to the icon items
+                document.querySelectorAll('.icon-item').forEach(item => {
+                    item.addEventListener('click', function() {
+                        const imageUrl = this.querySelector('img').src;
+                        selectImage(imageUrl);
+                    });
+                });
+            });
+              </script>
+
+              {% if request.session.user_id %}
+                <div id="exportIcons" type="button" style="background-color:#fe440b; max-width: 200px; height: 38px;color: #f1eeee; border-radius: 6px; padding: 6px 4px 6px 4px;text-align: center;">
+                  Export icons
+                </div><br>
+              {% else %}
+              <a href="#popup2"><div type="button" style="background-color:#fe440b; max-width: 200px; height: 38px;color: #f1eeee; border-radius: 6px; padding: 6px 4px 6px 4px;text-align: center;">
+                Export icons
+              </div><br></a>
+              {% endif %}
+                <!-- <script>
+                    document.getElementById('exportIcons').addEventListener('click', function() {
+                        // Example icons data (in practice, replace with actual icon data)
+                        const icons = {
+                            'icon1.png': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...',
+                            'icon2.jpeg': 'data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...'
+                        };
+
+                        // Function to trigger download of a PNG file
+                        function downloadFile(filename, dataURL) {
+                            const a = document.createElement('a');
+                            a.href = dataURL;
+                            a.download = filename;
+                            document.body.appendChild(a); // Append to body for Firefox
+                            a.click();
+                            document.body.removeChild(a); // Remove after download
+                        }
+
+                        // Trigger download for each icon
+                        for (const [filename, dataURL] of Object.entries(icons)) {
+                            downloadFile(filename, dataURL);
+                        }
+                    });
+                </script> -->
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  {% endblock main %}
+  <div id="popup2" class="popup-container popup-style-2">
+    <div class="popup-content">
+      <a href="#" class="close">&times;</a>
+      <!-- <h3>Popup 7</h3> -->
+      <p>Login for further process.</p>
+      <a href="{% url 'icons_app:login' %}"><button class="btn btn-outline-dark">Login</button></a>
+    </div>
+  </div>
+
+  <!-- ======= Footer ======= -->
+  {% block footer %}
+  <footer id="footer" class="footer" style="margin-top: 80px;">
+    <div class="copyright">
+      &copy; Copyright <strong><span>EMT</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+     Designed by <a href="" class="text-dark">ExtraMindTech</a>
+    </div>
+  </footer><!-- End Footer -->
+  {% endblock footer %}
+  <a href="" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/apexcharts/apexcharts.min.js'%}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'vendor/chart.js/chart.umd.js'%}"></script>
+  <script src="{% static 'vendor/echarts/echarts.min.js'%}"></script>
+  <script src="{% static 'vendor/quill/quill.js'%}"></script>
+  <script src="{% static 'vendor/simple-datatables/simple-datatables.js'%}"></script>
+  <script src="{% static 'vendor/tinymce/tinymce.min.js'%}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js'%}"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-toBlob@0.4.0/dist/canvas-toBlob.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas2image@0.4.0/dist/canvas2image.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'js/icons_main.js'%}"></script>
+
+</body>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+            const sizeInput = document.getElementById('size');
+            const strokeInput = document.getElementById('stroke');
+            const colorPicker = document.getElementById('colorPicker');
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const exportIconsButton = document.getElementById('exportIcons');
+
+            let currentImage = null;
+            let selectedFormat = 'png'; // Default format
+
+            function loadImage() {
+                if (currentImage) {
+                    const size = parseInt(sizeInput.value);
+                    const stroke = parseInt(strokeInput.value);
+
+                    canvas.width = size;
+                    canvas.height = size;
+
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    // Draw the image
+                    ctx.drawImage(currentImage, stroke, stroke, size - 2 * stroke, size - 2 * stroke);
+
+                    // Draw the border
+                    ctx.strokeStyle = 'black';
+                    ctx.lineWidth = stroke;
+                    ctx.strokeRect(0, 0, size, size);
+
+                    // Apply color filter
+                    ctx.globalCompositeOperation = 'source-atop';
+                    ctx.fillStyle = colorPicker.value;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    ctx.globalCompositeOperation = 'source-over';
+                }
+            }
+
+            function selectImage(imageUrl) {
+                currentImage = new Image();
+                currentImage.crossOrigin = 'Anonymous';
+                currentImage.src = imageUrl;
+                currentImage.onload = loadImage;
+            }
+
+            function canvasToSVG(canvas) {
+                const width = canvas.width;
+                const height = canvas.height;
+                const dataURL = canvas.toDataURL('image/png');
+
+                let svgContent = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+                svgContent += `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">\n`;
+                svgContent += `<image href="${dataURL}" width="${width}" height="${height}" />\n`;
+                svgContent += `</svg>`;
+
+                return svgContent;
+            }
+
+            function exportImage(format) {
+                if (canvas) {
+                    let dataURL;
+                    if (format === 'png') {
+                        dataURL = canvas.toDataURL('image/png');
+                    } else if (format === 'jpeg') {
+                        dataURL = canvas.toDataURL('image/jpeg');
+                    } else if (format === 'svg') {
+                        const svg = canvasToSVG(canvas);
+                        dataURL = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+                    } else {
+                        console.error('Unsupported format');
+                        return;
+                    }
+
+                    let link = document.createElement('a');
+                    link.href = dataURL;
+                    link.download = `icon.${format}`;
+                    link.click();
+                }
+            }
+
+            function handleFormatSelection(event) {
+                document.querySelectorAll('.btn').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                event.target.classList.add('selected');
+                selectedFormat = event.target.id.replace('export', '').toLowerCase();
+            }
+
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('click', handleFormatSelection);
+            });
+
+            exportIconsButton.addEventListener('click', function() {
+                if (selectedFormat) {
+                    exportImage(selectedFormat);
+                }
+            });
+
+            document.querySelectorAll('.icon-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    selectImage(this.querySelector('img').src);
+                });
+            });
+
+            sizeInput.addEventListener('input', loadImage);
+            strokeInput.addEventListener('input', loadImage);
+            colorPicker.addEventListener('input', loadImage);
+        });
+</script>
+</html>

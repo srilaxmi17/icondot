@@ -1,0 +1,26 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="container mt-4">
+        <h2 class="font-weight-bold text-danger text-center">Confirm Deletion</h2>
+
+        <!-- Deletion confirmation form -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <div class="card-body text-center">
+                        <p>Are you sure you want to delete the sub-gradient category: <strong>{{ object.sub_gradient_category }}</strong>?</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                            <a href="{% url 'admin_app:gradient_category_list' %}" class="btn btn-secondary ms-2">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

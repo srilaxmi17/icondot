@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <title>Icons Dot</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css"
+        integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+
+<body>
+
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar bg-white navbar-expand-lg navbar-dark px-1 py-1 py-lg-0">
+
+            <a href="{% url 'icons_app:index' %}" class="navbar-brand ms-4">
+                <img src="{% static 'images/Logo Black-04.png'%}" alt="IconsDot"
+                    style="height: 80px;  object-fit: contain;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-5" id="navbarCollapse">
+                <div class="d-flex flex-column flex-md-row align-items-center w-100">
+                    <form class="d-flex flex-grow-1 mb-3 mb-md-0" role="search">
+                        <input class="form-control me-md-4 mb-2 mb-md-0" type="search"
+                            style="height: 45px; width: 100%; max-width: 30rem; border-radius: 8px; background-color:#f1eeee;"
+                            placeholder="Search 1000+ Icons                                    Type / to search"
+                            aria-label="Search">
+                    </form>
+                    <button class="btn me-3" id="Subscribe"
+                        style="height: 50px; max-width: 50%; border-radius: 8px; background: linear-gradient(86.43deg, #FFE978 0%, #FB4620 47%, #8D20FB 99.5%); color: white;">Get Full Access & 50% Offer
+                    </button>
+                    
+                </div>
+
+                <div class="d-flex flex-column flex-md-row align-items-center">
+                    <div class="navbar-nav ms-2 mt-3 mt-md-0">
+                        {% if request.session.user_id %}
+                        <div class="nav-item dropdown">
+                            <button class="btn btn-dark  dropdown-toggle login-button" data-bs-toggle="dropdown">
+                                <img src="{% static 'images/Favicon.svg' %}" style="object-fit: contain; height: 5vh;"
+                                    alt="Icon">{{ request.session.umail }}
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end m-0">
+                                <ul class="d-grid" style="list-style-type: none;">
+                                  <li class="dropdown-submenu position-relative">
+                                    <a class="dropdown-item" href="#" id="subscriptionDropdown">Subscription</a>
+                                    {% if active_subscription %}
+                                    <ul class="dropdown-menu position-absolute end-100 top-0">
+                                      <li><a class="dropdown-item" href="{% url 'icons_app:cancel_subscription' %}">Cancel</a></li>
+                                    </ul>
+                                    {% endif %}
+                                  </li>
+                                  <li><a class="dropdown-item" href="#">Feedback</a></li>
+                                  <li><a class="dropdown-item" href="{% url 'icons_app:logout' %}">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        {% else %}
+
+                        <div class="d-flex mt-3 mt-md-0">
+                            <a href="{% url 'icons_app:login' %}">
+                                <button type="button" class="btn btn-dark me-3 login-button">Login</button>
+                            </a>
+                            <a href="{% url 'icons_app:register' %}">
+                                <button type="button"
+                                    class="btn btn-outline-danger me-3 register-button">Register</button>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <br><br><br><br>
+
+   <style>
+     .dropdown-submenu {
+        position: relative;
+      }
+      
+      .dropdown-submenu .dropdown-menu {
+        left: -100%;
+        top: 0;
+        margin-top: 0;
+        margin-left: -30px;
+        display: none;
+      }
+      
+      .dropdown-submenu:hover .dropdown-menu {
+        display: block; 
+      }
+   </style>
+    
+    {% block content %}
+    <div class="container1 mt-3 col-lg-12">
+        <div class="filter-bar" >
+            <a href="{% url 'icons_app:subscription' %}"><button class="btn btn-outline-dark">All design</button></a>
+            {% for i in gradient_category %}
+            <a href="{% url 'icons_app:subscription' i.id %}"><button class="btn btn-outline-dark">{{ i.gradient_category }}</button></a>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container2 py-2">
+            <div class="row ms-2">
+                <div class="wow zoomIn" data-wow-delay="0.2s">
+                    <div class="icon-grid  justify-content-center ms-3 col-lg-10 justify-content-between">
+                        {% for i in sub_gradient_category|slice:":8" %}
+                        <div class="icon-card "
+                            style=" border: 1px solid gainsboro; padding: 1px; width: 250px; height: 250px; margin-left: 20px; background-color: #f5f2f2;">
+                            <a href="{% url 'icons_app:gra_img' i.id %}"> 
+                                {% if i.featured_image %}
+                                <img src="{{ i.featured_image.url }}"
+                                    alt="{{ i.sub_gradient_category }}" style="width:100%; height: 180px; background-color: #ffffff;">
+                                    {% else %}
+                                    <img src="{% static 'images/Favicon.svg' %}"
+                                    alt="Icon 1" style="width:100%; height: 180px; background-color: #ffffff;">  
+                                    {% endif %}
+                            </a>
+                            <h3>{{ i.sub_gradient_category }}</h3>
+                            <p>{{ i.gradient_category.gradient_category }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div><br><br><br>
+
+            <div class="bottom-bar ">
+                <button style="box-shadow: 0 0.9px 0px 0.02rem #ec3925; min-width: 150px;">Preview icons</button>
+                <button class="get-full-access" style=" background: linear-gradient(86.43deg, #FFE978 0%, #FB4620 47%, #8D20FB 99.5%); color: white;" id="Subscribe2" >Get Full Access & 50% Offer
+                   
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h1 class="mb-0">Why Choose Iconsdot?</h1>
+            </div>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col wow zoomIn" data-wow-delay="0.3s">
+                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center">
+
+                        <h4 class="mb-3" style="color: orangered;">Free Downloads</h4>
+                        <p class="mb-4">Access a selection of high-quality design resources at no cost.</p>
+                        <div class="service-icon mb-3">
+                            <img src="{% static 'images/1.png' %}" alt="Free Downloads"
+                                style="width: 150px; height: 150px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col wow zoomIn" data-wow-delay="0.6s">
+                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center">
+
+                        <h4 class="mb-3" style="color: orangered;">Quick & Easy</h4>
+                        <p class="mb-4">Streamline your creative process with Iconsdot's vast library of high-quality
+                            icons and design resources, saving you valuable time and effort.</p>
+                        <div class="service-icon mb-3">
+                            <img src="{% static 'images/2.png' %}" alt="Quick & Easy"
+                                style="width: 150px; height: 150px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col wow zoomIn" data-wow-delay="0.9s">
+                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center">
+
+                        <h4 class="mb-3" style="color: orangered;">Custom Designs</h4>
+                        <p class="mb-4">Unlock unique, tailor-made designs crafted to meet your specific needs.</p>
+                        <div class="service-icon mb-3">
+                            <img src="{% static 'images/3.png' %}" alt="Custom Designs"
+                                style="width: 150px; height: 150px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col wow zoomIn" data-wow-delay="1.2s">
+                    <div class="service-item d-flex flex-column align-items-center justify-content-center text-center">
+
+                        <h4 class="mb-3" style="color: orangered;">Premium Support</h4>
+                        <p class="mb-4">Get expert assistance with priority response times and personalized solutions.
+                        </p>
+                        <div class="service-icon mb-3">
+                            <img src="{% static 'images/4.png' %}" alt="Premium Support"
+                                style="width: 150px; height: 150px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid py-2 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-2">
+            <div class="section-title text-center position-relative pb-3 mb-0 mx-auto" style="max-width: 500px;">
+                <h1 class="heading m-0" style="font-size: 40px;">Tailor your shape with our</h1>
+                <p class="sub-heading m-0"
+                    style="font-family: Arial, Helvetica, sans-serif; font-size: 30px; color: rgb(59, 59, 59);">
+                    Creating team
+                </p>
+                <p class="sub-heading m-0"
+                    style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; color: rgb(78, 77, 77);">
+                    Let's get your request ready to send
+                </p>
+            </div>
+            <div class="container mt-2 centered-form-container py-5"  id="hireFormSection">
+                <div class="row justify-content-center g-5 mx-auto">
+                    <div class="col-8 wow slideInUp" data-wow-delay="0.3s" >
+                        {% if request.session.user_id %}
+                        <form method="post" action="{% url 'icons_app:subscription' %}" enctype="multipart/form-data"
+                            id="subscription-form">
+                            {% csrf_token %}
+
+
+                            <div class="row g-4">
+                                <div class="col-12">
+                                    <label for="email" class="mb-2 ms-1">
+                                        <span style="color: black;">Email</span> <span style="color: #ec2525;">*</span>
+                                    </label>
+                                    <input type="email" class="form-control border-0 px-4" placeholder="Your email here"
+                                        style="background-color: #f3f1f1; border-radius: 6px; height: 50px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;"
+                                        name="email" value="{{ request.session.umail }}">
+                                </div>
+                                <div class="col-12">
+                                    <label for="name" class="mb-2 ms-1">
+                                        <span style="color: black;">Name</span><span style="color: #ec2525;">*</span>
+                                    </label>
+                                    <input type="text" class="form-control border-0 px-4" placeholder="Your name here"
+                                        name="name"
+                                        style="background-color: #f3f1f1; border-radius: 6px; height: 50px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;">
+                                </div>
+                                <div class="col-12">
+                                    <label for="service" class="mb-2 ms-1">
+                                        <span style="color: black;">Service</span><span style="color: #ec2525;">*</span>
+                                    </label>
+                                    <select class="form-control border-0 px-4" name="gradientcategory"
+                                        style="background-color: #f3f1f1; border-radius: 6px; height: 50px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;"
+                                        aria-label="Default select example" required>
+                                        <option selected hidden disabled>Select your service</option>
+                                        {% for i in gradient_category %}
+                                        <option value="{{ i.id }}">{{ i.gradient_category }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="description" class="mb-2 ms-1">
+                                        <span style="color: black;">Project description</span><span
+                                            style="color: #ec2525;">*</span>
+                                    </label>
+                                    <textarea class="form-control border-0 px-4" rows="5"
+                                        placeholder="What about your project?"
+                                        style="background-color: #f3f1f1; border-radius: 6px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;"
+                                        name="description" required></textarea>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <input type="file" name="rq_image" class="form-control file-input px-5 border-0"
+                                        id="uploadFile" onchange="updatePlaceholder(this)"
+                                        style="background-color: #f5f5f5; height: 50px;">
+
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <button class="btn text-light w-90 py-3"
+                                        style="background-color: #ff5733; height: 50px; border-radius: 6px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;"
+                                        type="submit">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+
+                        {% else %}
+
+
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <label for="email" class="mb-2 ms-1">
+                                    <span style="color: black;">Email</span> <span style="color: #ec2525;">*</span>
+                                </label>
+                                <input type="email" class="form-control border-0 px-4" placeholder="Your email here"
+                                    style="background-color: #f3f1f1; border-radius: 6px; height: 50px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;"
+                                    name="email">
+                            </div>
+                            <div class="col-12">
+                                <label for="name" class="mb-2 ms-1">
+                                    <span style="color: black;">Name</span><span style="color: #ec2525;">*</span>
+                                </label>
+                                <input type="text" class="form-control border-0 px-4" placeholder="Your name here"
+                                    name="name"
+                                    style="background-color: #f3f1f1; border-radius: 6px; height: 50px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;">
+                            </div>
+                            <div class="col-12">
+                                <label for="service" class="mb-2 ms-1">
+                                    <span style="color: black;">Service</span><span style="color: #ec2525;">*</span>
+                                </label>
+                                <select class="form-control border-0 px-4" name="gradientcategory"
+                                    style="background-color: #f3f1f1; border-radius: 6px; height: 50px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;"
+                                    aria-label="Default select example" required>
+                                    <option selected hidden disabled>Select your service</option>
+                                    {% for i in gradient_category %}
+                                    <option value="{{ i.id }}">{{ i.gradient_category }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="description" class="mb-2 ms-1">
+                                    <span style="color: black;">Project description</span><span
+                                        style="color: #ec2525;">*</span>
+                                </label>
+                                <textarea class="form-control border-0 px-4" rows="5"
+                                    placeholder="What about your project?"
+                                    style="background-color: #f3f1f1; border-radius: 6px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;"
+                                    name="description" required></textarea>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <input type="file" name="rq_image" class="form-control file-input px-5 border-0"
+                                    id="uploadFile" onchange="updatePlaceholder(this)"
+                                    style="background-color: #f5f5f5; height: 50px;">
+
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <a href="#popup2"><button class="btn text-light w-90 py-3"
+                                        style="background-color: #ff5733; height: 50px; border-radius: 6px; box-shadow: 0 0.9px 0px 0.007rem #ec2525;">
+                                        Send Message
+                                    </button></a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pricing Plan Start -->
+
+    
+
+
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto"  id="subscribePlan" style="max-width: 600px;">
+                <h1 class="heading m-0" style="font-size:50px;"> Unlock Wallet </h1>
+                <p class="sub-heading m-0"
+                    style="font-family: Arial, Helvetica, sans-serif;font-size: 35px; color: rgb(36, 36, 36);">Upgrade
+                    to Premium Collection</p>
+            </div>
+            <div class="row g-4 justify-content-center " style="border-radius: 15px;">
+                <div class="col-lg-3 wow slideInUp" data-wow-delay="0.6s" >
+                    <div class="" style="background-color: #f1eeee; border-radius: 10px;">
+                        <div class="text-center py-4 px-5">
+                            <h4 class=" mb-1">Personal</h4>
+                        </div>
+
+                        <div class="p-4 pt-0 ">
+                            <h1 class="display-6 mb-4">
+                                <small class="align-top justify-content-center"
+                                    style="font-size: 20px; color: rgb(70, 68, 68); ">$</small>9.00<small
+                                    class="align-bottom"
+                                    style="color: rgb(70, 68, 68); font-size: 16px; line-height: 40px;">/ Monthly</small>
+                            </h1>
+                            <ul>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <li>Full Access</li>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <li>SVG/PNG</li>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <li>Lifetime Updates</li>
+                                </div>
+                            </ul>
+                            {% if request.session.user_id %}
+                                {% if active_subscription %}
+                                    <a href="#popup-cancel" class="btn justify-content-center ms-3 py-2 px-5 mt-3"
+                                    style="color: #1e1e1e; box-shadow: 0 0.9px 0px 0.007rem #ec2525; background-color: #fff;">Subscribe Now</a>
+                                {% else %}
+                                    <a href="{% url 'icons_app:subscribeplan' 'personal' %}" class="btn justify-content-center ms-3 py-2 px-5 mt-3"
+                                    style="color:rgb(255, 255, 255);border-radius: 8px;color: #1e1e1e;box-shadow: 0 0.9px 0px 0.007rem #ec2525; background-color:rgb(255, 255, 255);">Subscribe
+                                    Now</a>
+                                {% endif %}
+                            {% else %}
+                                <a href="#popup2" class="btn justify-content-center ms-3 py-2 px-5 mt-3"
+                                style="color:rgb(255, 255, 255);border-radius: 8px;color: #1e1e1e;box-shadow: 0 0.9px 0px 0.007rem #ec2525; background-color:rgb(255, 255, 255);">Subscribe
+                                Now</a>
+                            {% endif %}    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow slideInUp" data-wow-delay="0.6s">
+                    <div class="text-white" style="background-color: #1e1e1e; border-radius: 10px;">
+                        <div class="text-center py-4 px-5">
+                            <h4 class="text-white mb-1">Custom</h4>
+                        </div>
+
+                        <div class="p-4 pt-0 ">
+                            <h1 class="display-6 mb-4">
+                                <small class="align-top justify-content-center"
+                                    style="font-size: 22px; color: rgb(255, 255, 255); ">$</small> <span
+                                    style="color: #ffffff;">0.00 </span>
+                                <small class="align-bottom"
+                                    style="color: rgb(255, 255, 255); font-size: 16px; line-height: 40px;">/
+                                    Monthly</small>
+                            </h1>
+                            <ul>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <li>Unique Icons</li>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <li> SVG/PNG</li>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <li>Priority Suppot</li>
+                                </div>
+                            </ul>
+                            <a href="" class="btn justify-content-center ms-4 py-2 px-5 mt-3"
+                                style="color:rgb(255, 255, 255);border-radius: 8px; background-color:rgb(250, 47, 1);">Read
+                                More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 wow slideInUp" data-wow-delay="0.6s">
+                    <div class="" style="background-color: #f1eeee; border-radius: 10px;">
+                        <div class="text-center py-4 px-5">
+                            <h4 class=" mb-0">Team</h4>
+                        </div>
+
+                        <div class="p-4 pt-0 ">
+                            <h1 class="display-6 mb-0">
+                                <small class="align-top justify-content-center"
+                                    style="font-size: 20px; color: rgb(70, 68, 68); ">$</small>29.00<small
+                                    class="align-bottom"
+                                    style="color: rgb(70, 68, 68); font-size: 16px; line-height: 40px;">/ Monthly</small>
+                            </h1>
+                            <ul>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <li>Full Access </li>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <li> SVG/PNG</li>
+                                </div>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <li>10 Users</li>
+                                </div>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <li> Lifetime Updates</li>
+                                </div>
+                            </ul>
+                            {% if request.session.user_id %}
+                                {% if active_subscription %}
+                                        <a href="#popup-cancel" class="btn justify-content-center ms-3 py-2 px-5 mt-3"
+                                        style="color: #1e1e1e; box-shadow: 0 0.9px 0px 0.007rem #ec2525; background-color: #fff;">Subscribe Now</a>
+                                {% else %}
+                                    <a href="{% url 'icons_app:subscribeplan' 'team' %}" class="btn justify-content-center ms-3 py-2 px-5 mt-3"
+                                    style="color:rgb(255, 255, 255);border-radius: 8px; color: #1e1e1e;box-shadow: 0 0.9px 0px 0.007rem #ec2525; background-color:rgb(255, 255, 255);">Subscribe
+                                    Now</a>
+                                {% endif %}
+                            {% else %}
+                                <a href="#popup2" class="btn justify-content-center ms-3 py-2 px-5 mt-3"
+                                style="color:rgb(255, 255, 255);border-radius: 8px; color: #1e1e1e;box-shadow: 0 0.9px 0px 0.007rem #ec2525; background-color:rgb(255, 255, 255);">Subscribe
+                                Now</a>   
+                             {% endif %}    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid py-2 wow fadeInUp" data-wow-delay="0.4s">
+        <div class="container py-2">
+            <div class="section-title text-center position-relative pb-3 mb-0 mx-auto" style="max-width: 500px;">
+                <h2 class="sub-heading m-0"
+                    style="font-family: Arial, Helvetica, sans-serif; font-size: 30px; color: rgb(226, 2, 2);">
+                    Frequently Asked Questions
+                </h2>
+            </div>
+
+            <div class="container mt-2 centered-form-container py-5">
+                <div class="row justify-content-center g-5 mx-auto">
+                    <div class="col-8 wow slideInUp" data-wow-delay="0.3s">
+                        <div class="row g-4">
+                            <!-- FAQ Item 1 -->
+                            <div class="col-12">
+                                <details class="faq-item">
+                                    <summary class="mb-1 fw-bold">Can I download any resource after becoming a member?</summary>
+                                    <p>Yes, Subscription to Iconsdot grants you full access to our entire library of icons, including any new icons added during your subscription period.</p>
+                                </details>
+                            </div>
+            
+                            <!-- FAQ Item 2 -->
+                            <div class="col-12">
+                                <details class="faq-item">
+                                    <summary class="mb-1 fw-bold">What are the payment options?</summary>
+                                    <p>Iconsdot accepts a variety of payment methods, including major credit and debit cards, through our secure payment gateway. We don't capture any of your credit card details.</p>
+                                </details>
+                            </div>
+            
+                            <!-- FAQ Item 3 -->
+                            <div class="col-12">
+                                <details class="faq-item">
+                                    <summary class="mb-1 fw-bold">How can I cancel my subscription?</summary>
+                                    <p>You can cancel your subscription by logging into your Iconsdot account, navigating to the “Profile > Subscription" section, and selecting the option to cancel your subscription.</p>
+                                </details>
+                            </div>
+            
+                            <!-- FAQ Item 4 -->
+                            <div class="col-12">
+                                <details class="faq-item">
+                                    <summary class="mb-1 fw-bold">What happens if I cancel my subscription?</summary>
+                                    <p>If you cancel your subscription, you will retain access to premium features until the end of your current billing cycle. After that, your account will revert to the free tier.</p>
+                                </details>
+                            </div>
+            
+                            <!-- FAQ Item 5 -->
+                            <div class="col-12">
+                                <details class="faq-item">
+                                    <summary class="mb-1 fw-bold">I’m not satisfied with your resources. Can I have my money back?</summary>
+                                    <p>Yes, membership subscriptions are refundable only within the first week if fewer than 5 icons have been downloaded. You cannot use the downloaded resources for commercial projects if you request a refund.</p>
+                                </details>
+                            </div>
+            
+                            <!-- FAQ Item 6 -->
+                            <div class="col-12">
+                                <details class="faq-item">
+                                    <summary class="mb-1 fw-bold">Can I hire your team for custom design work?</summary>
+                                    <p>Yes, Iconsdot offers custom design services. If you need unique icons or specific design work, you can contact our team through the "Custom Design form" section on our website. Provide details about your project, and we will get back to you with a quote and timeline.</p>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+                .faq-item {
+                    background-color: #f3f1f1;
+                    border-radius: 6px;
+                    color: #141414;
+                    border: 1px solid rgb(186, 184, 184);
+                    padding: 10px;
+                }
+            
+                .faq-item summary {
+                    cursor: pointer;
+                    outline: none;
+                }
+            
+                .faq-item p {
+                    margin-top: 10px;
+                    margin-bottom: 0;
+                }
+            
+                .faq-item[open] summary {
+                    font-weight: bold;
+                }
+            </style>
+        </div>
+    </div>
+
+    {% endblock %}
+    <!-- Footer Start -->
+    <div class="container-fluid text-light mt-4 wow fadeInUp" data-wow-delay="0.1s" style="background-color: #000000;">
+        <div class="container pb-4">
+            <div class="row gx-5">
+                <div class="col-lg-12 col-md-4">
+                    <div class="row gx-5">
+                        <div class="col-lg-5 col-md-6 pt-4 mb-0">
+                            <div class="section-title section-title-sm position-relative pb-0 mb-0">
+                                <a href="#" class="navbar-brand ms-4">
+                                    <img src="{% static 'images/Logo White-05.png'%}" alt="IconsDot"
+                                        style="height: 90px;  object-fit: contain;">
+                                </a>
+                            </div>
+                            <span class="ms-4">Access to high-quality design </span><br><span class="ms-4"> resources at
+                                no cost.</span>
+                            <div class="d-flex mb-2 mt-3">
+
+                                <button class="btn ms-4 mt-3" id="Sub3"
+                                    style="height: 40px; max-width: 60%; font-size: 12px; border-radius: 6px; background: linear-gradient(86.43deg, #FFE978 0%, #FB4620 47%, #8D20FB 99.5%); color: white;">Get Full Access & 50% Offer  
+                                </button>
+                               
+                                <button class="btn ms-2 mt-3" id="hireButton1"
+                                    style="height: 40px; max-width: 100%; padding-left: 20px; padding-right: 20px; font-size: 12px; border-radius: 6px; background-color: #535252; color: white;">Hire
+                                </button>
+
+                            </div>
+                        </div>
+                       
+                        <div class="col-lg-2 col-md-12 pt-0 pt-lg-5 mb-4">
+                            <div class="section-title section-title-sm position-relative pb-2 mb-2">
+                                <h4 class="text-light mb-0">Resources</h4>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <a class=" mb-2" style="color: #a8a8a8; text-decoration: none; font-size: 16px;"
+                                    href="">Icon Pack</a>
+                                <a class=" mb-2" style="color: #a8a8a8; text-decoration: none; font-size: 16px;"
+                                    href="">UI Kits</a>
+                                <a class=" mb-2" style="color: #a8a8a8; text-decoration: none; font-size: 16px;"
+                                    href="">3D Assets</a>
+                                <a class=" mb-2" style="color: #a8a8a8; text-decoration: none; font-size: 16px;"
+                                    href="">Presentations</a>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12 pt-0 pt-lg-5 mb-4">
+                            <div class="section-title section-title-sm position-relative pb-2 mb-2">
+                                <h4 class="text-light mb-0">Community</h4>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <a class=" mb-2" style="color: #a8a8a8; text-decoration: none; font-size: 16px;"
+                                    href="">Twitter</a>
+                                <a class=" mb-2" style="color: #a8a8a8; text-decoration: none; font-size: 16px;"
+                                    href="">Instagram</a>
+                                <a class=" mb-2" style="color: #a8a8a8; text-decoration: none; font-size: 16px;"
+                                    href="">Dribble</a>
+                                <a class=" mb-2" style="color: #a8a8a8; text-decoration: none; font-size: 16px;"
+                                    href="">Behance</a>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-12 pt-0 pt-lg-5 mb-4">
+                            <div class="section-title section-title-sm position-relative pb-2 mb-2">
+                                <h4 class="text-light mb-0">Contact</h4>
+                            </div>
+                            <div class="link-animated d-flex flex-column justify-content-start">
+                                <a class=" mb-2" style="color: #a8a8a8; text-decoration: none; font-size: 16px;"
+                                    href="">Support@iconsdot.com</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup2" class="popup-container popup-style-2">
+        <div class="popup-content">
+          <a href="#" class="close">&times;</a>
+          <!-- <h3>Popup 7</h3> -->
+          <p>Login for further process.</p>
+          <a href="{% url 'icons_app:login' %}"><button class="btn btn-outline-dark">Login</button></a>
+        </div>
+      </div>
+       <!-- reminder_popup  -->
+      <!-- <div id="popup-reminder" class="popup-container popup-style-2">
+        <div class="popup-content">
+            <a href="#" class="close">&times;</a>
+            <p>Your current plan is about to expire. Would you like to renew it?</p>
+            <p><strong>Plan:</strong> {{ active_c_subscription.plan.name }}</p>
+            <p><strong>Expiry Date:</strong> {{ active_c_subscription.expiry_date }}</p>
+            <a href="{% url 'icons_app:subscription' %}"><button class="btn btn-outline-dark">Renew Now</button></a>
+        </div>
+    </div> -->
+     <!-- endif  -->
+    {% if active_c_subscription %}
+    <div id="popup-cancel" class="popup-container popup-style-2">
+        <div class="popup-content">
+            <a href="#" class="close">&times;</a>
+            <p>You have an active subscription.</p>
+            <p><strong>Plan:</strong> {{ active_c_subscription.plan.name }}</p>
+            <p><strong>Expiry Date:</strong> {{ active_c_subscription.expiry_date }}</p>
+            <!-- <p><strong>Days Left to Expire:</strong> {{ days_to_expiry }} days</p> -->
+            <p>To subscribe to a new plan, please cancel your current plan.</p>
+            <a href="{% url 'icons_app:cancel_subscription' %}"><button class="btn btn-outline-dark">Cancel Plan</button></a>
+        </div>
+    </div>
+    {% endif %}
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="" class="btn btn-lg btn-dark rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+<script>
+
+
+document.getElementById('Subscribe').addEventListener('click', function() {
+       
+    window.location.href = 'http://127.0.0.1:8000/subscription#subscribePlan';
+});
+
+
+document.getElementById('Sub3').addEventListener('click', function() {
+       
+       window.location.href = 'http://127.0.0.1:8000/subscription#subscribePlan';
+   });
+
+   
+                                    
+document.getElementById('hireButton1').addEventListener('click', function() {
+
+window.location.href = 'http://127.0.0.1:8000/subscription#hireFormSection'; 
+});
+
+
+
+document.getElementById('Subscribe2').addEventListener('click', function() {
+  // Get the element to scroll to
+  var element = document.getElementById('subscribePlan');
+  
+  // Smooth scroll to the target element
+  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+</script>
+
+</html>

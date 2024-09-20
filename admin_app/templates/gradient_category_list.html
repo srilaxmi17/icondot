@@ -1,0 +1,110 @@
+<!-- gradient_category_list.html -->
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="container mt-4">
+        <h2 class="font-weight-bold text-primary text-center">Gradient and Sub-Gradient Categories</h2><br>
+        
+        <div class="row">
+            <!-- Gradient Categories Section -->
+            <div class="col-md-6">
+                <h4 class="font-weight-bold text-primary text-center">Gradient Categories</h4>
+                
+                <!-- Form to add a new gradient category -->
+                <div class="mb-4">
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="add_gradient" value="1">
+                        
+                        <!-- Gradient Category Field -->
+                        <div class="form-group mb-3">
+                            <label for="gradientCategory"><b>Gradient Category:</b></label>
+                            {{ gradient_form.gradient_category}} <!-- Use form field -->
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-dark">Add Gradient Category</button>
+                    </form>
+                </div>
+                
+                <!-- List of gradient categories -->
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Gradient Category</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for gradient in gradients %}
+                        <tr>
+                            <td>{{ gradient.gradient_category }}</td>
+                            <td>
+                                <a href="{% url 'admin_app:edit_gradient_category' gradient.id %}" class="btn btn-dark btn-sm">Edit</a>
+                                <a href="{% url 'admin_app:confirm_delete_gradient' gradient.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">No gradient categories found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Sub-Gradient Categories Section -->
+            <div class="col-md-6">
+                <h4 class="font-weight-bold text-primary text-center">Sub-Gradient Categories</h4><br>
+                
+                 <!-- Form to add a new sub-gradient category -->
+                 <div class="mb-4">
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="add_sub_gradient" value="1">
+                        
+                        <div class="form-group mb-3">
+                            <label for="sub_gradient_category"><b>{{ sub_gradient_form.sub_gradient_category.label }}:</b></label>
+                            {{ sub_gradient_form.sub_gradient_category }} <!-- Use form field -->
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="gradient_category"><b>{{ sub_gradient_form.gradient_category.label }}:</b></label>
+                            {{ sub_gradient_form.gradient_category}} <!-- Use form field -->
+                        </div>
+                        <button type="submit" class="btn btn-dark">Add Sub-Gradient Category</button>
+                    </form>
+                </div>
+
+                <!-- List of sub-gradient categories -->
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sub-Gradient Category</th>
+                            <th scope="col">Gradient Category</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sub_gradient in sub_gradients %}
+                        <tr>
+                            <td>{{ sub_gradient.sub_gradient_category }}</td>
+                            <td>{{ sub_gradient.gradient_category.gradient_category }}</td>
+                            <td>
+                                <a href="{% url 'admin_app:edit_sub_gradient_category' sub_gradient.id %}" class="btn btn-dark btn-sm">Edit</a>
+                                <a href="{% url 'admin_app:delete_sub_gradient_category' sub_gradient.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">No sub-gradient categories found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

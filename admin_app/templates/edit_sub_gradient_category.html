@@ -1,0 +1,39 @@
+{% extends 'admin_index.html' %}
+{% load static %}
+
+{% block main %}
+<main id="main" class="main">
+    <div class="container mt-4">
+        <h2 class="font-weight-bold text-primary text-center">Edit Sub-Gradient Category</h2>
+
+        <!-- Form to edit a sub-gradient category -->
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm p-4">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+
+                            <!-- Sub-Gradient Category Field -->
+                            <div class="form-group mb-3">
+                                <label for="subGradientCategory"><b>{{ form.sub_gradient_category.label }}</b></label>
+                                {{ form.sub_gradient_category }}
+                            </div>
+
+                            <!-- Gradient Category (Dropdown) Field -->
+                            <div class="form-group mb-3">
+                                <label for="gradientCategory"><b>{{ form.gradient_category.label }}</b></label>
+                                {{ form.gradient_category }}
+                            </div>
+
+                            <!-- Save Button -->
+                            <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                            <a href="{% url 'admin_app:gradient_category_list' %}" class="btn btn-secondary mt-3 ms-2">Back to list</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
